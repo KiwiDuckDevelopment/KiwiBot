@@ -4,14 +4,31 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 import javax.security.auth.login.LoginException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Main extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
-        JDABuilder builder = new JDABuilder(AccountType.BOT);
-        String token = "ODE5MTA2OTEwMjIxMzY5MzQ1.YEhywQ.qPMRnW7h_H9zeBakjkUvQa8RTtI";
-        builder.setToken(token);
-        builder.addEventListener(new Main());
-        builder.buildAsync();
+        init();
+    }
+
+    public static void init() throws LoginException {
+        String token = "";
+        try {
+            File file = new File("../bot_token.txt");
+            System.out.println(String.format("Full file path: %s", file.getAbsolutePath()));
+            Scanner reader = new Scanner(file);
+            token = reader.nextLine();
+            reader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        JDABuilder bot = new JDABuilder(AccountType.BOT);
+        bot.setToken(token);
+        bot.addEventListener(new Main());
+        bot.buildAsync();
     }
 
     @Override
