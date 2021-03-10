@@ -22,15 +22,34 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-.env/
+# Gradle
 .gradle/
-.idea/
+gradle/
+gradlew.bat
+build/
+out/
+classes/
 
-gradle
+# Eclipse
+*.launch
+
+# Idea
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VsCode
+.settings/
+.vscode/
+bin/
+.classpath
+.project
 
 # MacOS Stuff
 .DS_Store
 .AppleDouble
 .LSOverride
 
-*bot_token.txt
+# Discord App Auth
+.env

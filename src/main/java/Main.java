@@ -7,6 +7,7 @@ import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class Main extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
@@ -15,15 +16,8 @@ public class Main extends ListenerAdapter {
 
     public static void init() throws LoginException {
         String token = "";
-        try {
-            File file = new File("../bot_token.txt");
-            System.out.println(String.format("Full file path: %s", file.getAbsolutePath()));
-            Scanner reader = new Scanner(file);
-            token = reader.nextLine();
-            reader.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        Dotenv dotenv = Dotenv.load();
+        token = dotenv.get("BOT_TOKEN");
 
         JDABuilder bot = new JDABuilder(AccountType.BOT);
         bot.setToken(token);
