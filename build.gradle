@@ -13,13 +13,13 @@ sourceCompatibility = targetCompatibility = 1.8
 
 repositories {
     jcenter()
-    maven { url 'https://jitpack.io' }
+//    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     compile 'net.dv8tion:JDA:4.2.0_247'
     compile 'io.github.cdimascio:dotenv-java:2.2.0'
-    implementation 'com.github.Kaktushose:jda-commands:1.1.1'
+//    implementation 'com.github.Kaktushose:jda-commands:1.1.1'
 }
 
 compileJava.options.encoding = 'UTF-8'
